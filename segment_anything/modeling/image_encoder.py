@@ -18,7 +18,7 @@ from .common import LayerNorm2d, MLPBlock
 class ImageEncoderViT(nn.Module):
     def __init__(
         self,
-        img_size: int = 1024,
+        img_size: int = 384,
         patch_size: int = 16,
         in_chans: int = 3,
         embed_dim: int = 768,
@@ -109,7 +109,7 @@ class ImageEncoderViT(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.patch_embed(x)
         if self.pos_embed is not None:
-            # print(self.img_size)
+            print(self.img_size)
             x = x + self.pos_embed
 
         for blk in self.blocks:
