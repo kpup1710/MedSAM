@@ -54,7 +54,7 @@ class ImageEncoderViT(nn.Module):
             global_attn_indexes (list): Indexes for blocks using global attention.
         """
         super().__init__()
-        self.img_size = img_size
+        self.img_size = 1024
 
         self.patch_embed = PatchEmbed(
             kernel_size=(patch_size, patch_size),
