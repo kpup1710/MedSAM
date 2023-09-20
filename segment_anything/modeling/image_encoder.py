@@ -54,7 +54,7 @@ class ImageEncoderViT(nn.Module):
             global_attn_indexes (list): Indexes for blocks using global attention.
         """
         super().__init__()
-        self.img_size = 384
+        self.img_size = 1024
 
         self.patch_embed = PatchEmbed(
             kernel_size=(patch_size, patch_size),
@@ -109,8 +109,7 @@ class ImageEncoderViT(nn.Module):
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.patch_embed(x)
         if self.pos_embed is not None:
-            print(self.pos_embed.shape)
-            print(x.shape)
+   
             x = x + self.pos_embed
 
         for blk in self.blocks:
